@@ -1,0 +1,67 @@
+Step 1:
+Download iHadoop.tar.gz in master machine and jobtracker into /home/$username directory.
+
+Step 2:
+Untar iHadoop.tar.gz with the following command on both master and jobtracker. 
+$tar -xvzf iHadoop.tar.gz
+
+Step 3:
+Goto to directory iHadoop and type following command to start the script on the master machine.
+
+$bin/startsh.sh
+
+For installing hadoop choice 1 should be selected.
+For installing Fully Distributed cluster choice 2 should be selected
+So if you are installing Hadoop for the first time please execute all the steps in the given sequence
+otherwise you can select the choice as required.
+
+Step 4:
+ In Order to install fully distributed cluster, first step is to set the prerequisites required for fully distributed cluster.For that option 1 should be selected.
+just press enter
+Select the option one by one to enter the server details.
+
+Note:While entering master details all other server details will be reset.So all other server details should be entered only after entering master server details.
+
+If you have already entered the server details it will show you the server details before showing the menu.
+
+
+In order to enter master server details enter choice 1.
+Enter the username(for e.g.- test),ip address(for e.g.- 172.17.197.205) and hostname(for e.g.- vanshish)
+
+Repeat the same procedure for all the servers i.e checkpoint,jobtracker,slaves
+After Server details are entered.Press option 5.
+
+Step 5:
+Select option 2 to install Hadoop on all the nodes.
+Enter the version you want to install and then enter option 2 to install that version on all the servers 
+
+Step 6:
+
+Enter option 3 to configure the hadoop cluster.
+Enter the port number for namenode(for e.g.- 9000) 
+Note: port number should be greater than 1024
+Enter the port number for jobtracker(for e.g.- 9001)
+Note: port number should be greater than 1024
+Enter the hostname for namenode(for e.g.- vanshish)
+Enter the hostname for jobtracker(for e.g.- DEBARSHI)
+Enter the replication factor(for e.g. 2)
+Note: replication factor of cluster should be less than or equal to number of slaves in the cluster.
+
+After the configuration is done,Again following menu will appear.
+
+It will set up a passphraseless ssh key and will copy the public key into all the machines in the cluster.This script will also start the mapred daemons on all the machines in the cluster.
+Step 7:
+Enter option 4 to start the distributed file system daemons of the cluster on the master machine.
+Follow the steps given in the note on all the machines in the cluster.
+1.Configure hadoop-env.sh
+2.copy the content of iHadoop/conf/masters,checkpoint,jobtracker,slaves file into /etc/hosts file
+by logging into root in all the machines
+If you are starting cluster for the first time and want to format the namenode enter y else enter n.
+Now run the following command in order to see the java processes running
+$jps
+
+Step 8:
+Now log into the jobtracker goto /home/test/iHadoop and run the following command 
+$bin/jobtracker.sh
+It will set up a passphraseless ssh key and will copy the public key into all the machines in the cluster.This script will also start the mapred daemons on all the machines in the cluster.
+
